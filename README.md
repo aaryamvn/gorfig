@@ -20,6 +20,6 @@ A simple discord bot that allows you to obtain all the role, channel, sticker, o
 
 ## **History behind the name**
 
-<img src="https://media.discordapp.net/attachments/864826842707132446/930168180964462612/unknown.png" />
+<img src="https://media.discordapp.net/attachments/864826842707132446/930168180964462612/unknown.png" style="width:500px; height:500px;" />
 
 _Long story short, I lived up to my word._
