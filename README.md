@@ -4,7 +4,6 @@
 
 A simple discord bot that allows you to obtain all the role, channel, sticker, or emoji data of a discord guild in key-value pairs (supports ts, js, and py).
 
-<br>
 
 ## **How is this useful?**
 
@@ -16,10 +15,8 @@ A simple discord bot that allows you to obtain all the role, channel, sticker, o
 
 **This is where Gorfig comes in.** Simply add the bot to the respective guild, and run a singular command to get all the data for roles, channels, emojis, or stickers in a key-value pair format for a language of choice (typescript, javascript, python).
 
-<br>
+## **Contributing**
 
-## **History behind the name**
+This project is lead by <a href="https://twitter.com/aaryamvn">@aaryamvn</a> (Aaryaman Maheshwari). 
 
-<img src="https://media.discordapp.net/attachments/864826842707132446/930168180964462612/unknown.png" style="width:500px; height:500px;" />
-
-_Long story short, I lived up to my word._
+If you are interested in contributing to this project, make a pull request into the `dev` branch. I highly recommend pinging me (Aaryaman#0001) in the <a href="">Gorfig Discord Server</a> prior to actually making a code contribution.
