@@ -1,33 +1,26 @@
 {
-	"compilerOptions": {
-	  "target": "ESNext",
-	  "module": "ESNext",
-	  "moduleResolution": "node",
-	  "lib": ["ESNext"],
-  
-	  "rootDir": ".",
-	  "outDir": "dist",
-  
-	  "strict": true,
-	  "alwaysStrict": true,
-	  "strictFunctionTypes": true,
-	  "strictNullChecks": true,
-	  "strictPropertyInitialization": true,
-  
-	  "forceConsistentCasingInFileNames": true,
-	  "noImplicitAny": true,
-	  "noImplicitReturns": true,
-	  "noImplicitThis": true,
-	  "noFallthroughCasesInSwitch": true,
-	  "noUnusedLocals": true,
-	  "noUnusedParameters": true,
-	  "noImplicitOverride": true,
-  
-	  "skipLibCheck": true,
-  
-	  "pretty": true,
-  
-	  "typeRoots": ["node_modules/@types", "typings/"]
-	},
-	"main": "src/index.ts"
-  }
+    "compilerOptions": {
+        "lib": ["ES2015"],
+        "outDir": "dist",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictNullChecks": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": false,
+        "noUnusedLocals": false,
+        "useUnknownInCatchVariables": false,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["./src/*"]
+        },
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "typeRoots": ["node_modules/@types", "src/typings/"]
+    },
+    "include": ["src/**/*.ts"]
+}

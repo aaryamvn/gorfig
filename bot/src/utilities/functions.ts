@@ -14,7 +14,7 @@ import { existsSync, mkdirSync, readdirSync } from "fs";
 import { PetitioRequest } from "petitio/dist/lib/PetitioRequest";
 import { permissionNames } from "./permissions.js";
 import BetterClient from "../extensions/BetterClient.js";
-import { GeneratedMessage, GenerateTimestampOptions } from "../typings";
+import { GeneratedMessage, GenerateTimestampOptions } from "../../typings";
 
 export default class Functions {
     /**

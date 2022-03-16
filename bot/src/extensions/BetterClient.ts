@@ -1,5 +1,4 @@
 import { resolve } from "path";
-import { MongoClient } from "mongodb";
 import * as metrics from "datadog-metrics";
 import { Client, ClientOptions, Collection } from "discord.js";
 import Button from "../classes/Button.js";
@@ -7,7 +6,7 @@ import DropDown from "../classes/DropDown.js";
 import * as Logger from "../classes/Logger.js";
 import Config from "../../config/bot.config.js";
 import Functions from "../utilities/functions.js";
-import { CachedStats, Stats } from "../typings";
+import { CachedStats, Stats } from "../../typings";
 import TextCommand from "../classes/TextCommand.js";
 import EventHandler from "../classes/EventHandler.js";
 import SlashCommand from "../classes/SlashCommand.js";
@@ -208,10 +207,9 @@ export default class BetterClient extends Client {
     }
 
     /**
-     * Connect to MongoDB and login to Discord.
+     * login to Discord.
      */
     override async login() {
-        await this.mongo.connect();
         return super.login();
     }
 

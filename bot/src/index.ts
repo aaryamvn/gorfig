@@ -1,34 +1,19 @@
-import { load } from "dotenv-extended";
-import { ShardingManager } from "discord.js";
+import * as dotenv from "dotenv";
 import Config from "../config/bot.config.js";
-import Logger from "./classes/Logger.js";
+import BetterClient from "./extensions/BetterClient.js";
 
-load({
-    path: process.env.NODE_ENV === "development" ? ".env.dev" : ".env.prod"
+dotenv.config();
+
+const client = new BetterClient({
+    allowedMentions: { parse: ["users"] },
+    restTimeOffset: 10,
+    restGlobalRateLimit: 50,
+    invalidRequestWarningInterval: 500,
+    presence: Config.presence,
+    intents: Config.intents
 });
 
-const version =
-    process.env.NODE_ENV === "development"
-        ? `${Config.version}-dev`
-        : Config.version;
-
-const manager = new ShardingManager("./dist/src/bot/bot.js", {
-    token: process.env.DISCORD_TOKEN
-});
-
-Logger.info(`Starting ${Config.botName} ${version}`);
-
-manager.spawn({
-    timeout: -1
-});
-
-manager.on("shardCreate", shard => {
-    Logger.info(`Starting Shard ${shard.id}.`);
-    if (shard.id + 1 === manager.totalShards) {
-        shard.once("ready", () => {
-            setTimeout(() => {
-                Logger.info("All shards are online and ready!");
-            }, 200);
-        });
-    }
+client.login().catch(error => {
+    client.logger.error(error);
+    client.logger.sentry.captureException(error);
 });

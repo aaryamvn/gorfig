@@ -5,14 +5,21 @@
     "main": "dist/index.js",
     "type": "module",
     "scripts": {
-        "build": "tsc && cross-env NODE_ENV=development node .",
-        "start": "cross-env NODE_ENV=production node ."
+        "build": "tsc && tsc-alias",
+        "start": "npm run build && node dist/index.js",
+        "dev": "ts-node-dev --transpile-only --respawn -r tsconfig-paths/register src/index.ts"
     },
     "dependencies": {
+        "@lukeed/ms": "^2.0.0",
+        "@sentry/node": "^6.18.2",
+        "@sentry/tracing": "^6.18.2",
         "colorette": "^2.0.16",
-        "discord.js": "github:FireDiscordBot/discord.js"
+        "discord.js": "github:FireDiscordBot/discord.js",
+        "petitio": "^1.4.0"
     },
     "devDependencies": {
+        "@sentry/types": "^6.18.2",
+        "@types/datadog-metrics": "^0.6.2",
         "@types/node": "^16.11.9",
         "@typescript-eslint/eslint-plugin": "^5.8.0",
         "@typescript-eslint/parser": "^5.8.0",

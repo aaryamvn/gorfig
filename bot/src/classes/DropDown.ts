@@ -3,7 +3,7 @@ import {
     PermissionString,
     SelectMenuInteraction
 } from "discord.js";
-import { ButtonOptions } from "../typings";
+import { ButtonOptions } from "~/typings/index";
 import BetterClient from "../extensions/BetterClient.js";
 
 export default class DropDown {

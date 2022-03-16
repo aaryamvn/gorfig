@@ -6,7 +6,7 @@ import {
     PermissionString,
     Snowflake
 } from "discord.js";
-import { SlashCommandOptions } from "../typings";
+import { SlashCommandOptions } from "../../typings";
 import BetterClient from "../extensions/BetterClient.js";
 
 export default class SlashCommand {
