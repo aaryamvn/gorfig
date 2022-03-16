@@ -1,0 +1,11 @@
+{
+  "name": "gorfig",
+  "version": "1.0.0",
+  "repository": "https://github.com/aaryamvn/gorfig.git",
+  "author": "Aaryaman Maheshwari <hey@aaryaman.io>",
+  "license": "MIT",
+  "workspaces": [
+    "package",
+    "bot"
+  ]
+}
