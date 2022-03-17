@@ -1,4 +1,4 @@
-import EventHandler from "../classes/EventHandler.js";
+import { EventHandler } from "~/classes/EventHandler";
 
 export class ShardError extends EventHandler {
     override async run(error: Error, shardId: number) {

@@ -1,5 +1,5 @@
-import EventHandler from "../classes/EventHandler.js";
-import BetterMessage from "../extensions/BetterMessage.js";
+import { EventHandler } from "~/classes/EventHandler";
+import { BetterMessage } from "~/extensions/BetterMessage";
 
 export class MessageCreate extends EventHandler {
     override async run(message: BetterMessage) {

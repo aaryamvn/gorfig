@@ -3,7 +3,7 @@ import {
     MessageEmbedOptions,
     PermissionString
 } from "discord.js";
-import BetterClient from "~/extensions/BetterClient";
+import { BetterClient } from "~/extensions/BetterClient";
 import { ButtonOptions } from "~/typings";
 
 export class Button {

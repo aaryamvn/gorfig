@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
-import Config from "../config/bot.config.js";
-import BetterClient from "./extensions/BetterClient.js";
+import { config } from "./config";
+import { BetterClient } from "./extensions/BetterClient";
 
 dotenv.config();
 
@@ -9,8 +9,8 @@ const client = new BetterClient({
     restTimeOffset: 10,
     restGlobalRateLimit: 50,
     invalidRequestWarningInterval: 500,
-    presence: Config.presence,
-    intents: Config.intents
+    presence: config.presence,
+    intents: config.intents
 });
 
 client.login().catch(error => {

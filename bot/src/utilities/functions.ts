@@ -12,9 +12,9 @@ import {
 } from "discord.js";
 import { existsSync, mkdirSync, readdirSync } from "fs";
 import { PetitioRequest } from "petitio/dist/lib/PetitioRequest";
-import { permissionNames } from "./permissions.js";
-import BetterClient from "../extensions/BetterClient.js";
-import { GeneratedMessage, GenerateTimestampOptions } from "../../typings";
+import { BetterClient } from "~/extensions/BetterClient";
+import { GeneratedMessage, GenerateTimestampOptions } from "~/typings";
+import { permissionNames } from "./permissions";
 
 export class Functions {
     /**

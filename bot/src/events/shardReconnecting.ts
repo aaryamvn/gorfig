@@ -1,4 +1,4 @@
-import EventHandler from "../classes/EventHandler.js";
+import { EventHandler } from "~/classes/EventHandler.js";
 
 export class ShardReconnecting extends EventHandler {
     override async run(shardId: number) {

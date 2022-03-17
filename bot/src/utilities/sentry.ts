@@ -1,8 +1,8 @@
 import { format } from "util";
 import * as Sentry from "@sentry/node";
 import { Interaction } from "discord.js";
-import BetterMessage from "../extensions/BetterMessage";
 import * as dotenv from "dotenv";
+import { BetterMessage } from "~/extensions/BetterMessage";
 
 dotenv.config();
 

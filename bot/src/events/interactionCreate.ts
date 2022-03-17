@@ -1,5 +1,5 @@
 import { Interaction } from "discord.js";
-import EventHandler from "../classes/EventHandler.js";
+import { EventHandler } from "../classes/EventHandler.js";
 
 export class InteractionCreate extends EventHandler {
     override async run(interaction: Interaction) {

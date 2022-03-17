@@ -1,7 +1,7 @@
 import { Snowflake } from "discord.js";
-import BetterClient from "~/extensions/BetterClient";
-import BetterMessage from "~/extensions/BetterMessage";
-import TextCommand from "./TextCommand";
+import { BetterClient } from "~/extensions/BetterClient";
+import { BetterMessage } from "~/extensions/BetterMessage";
+import { TextCommand } from "./TextCommand";
 
 export class TextCommandHandler {
     /**
@@ -10,24 +10,11 @@ export class TextCommandHandler {
     private readonly client: BetterClient;
 
     /**
-     * How long a user must wait between each text command.
-     */
-    private readonly coolDownTime: number;
-
-    /**
-     * Our user's cooldowns.
-     */
-    private coolDowns: Set<Snowflake>;
-
-    /**
      * Create our TextCommandHandler.
      * @param client
      */
     constructor(client: BetterClient) {
         this.client = client;
-
-        this.coolDownTime = 1000;
-        this.coolDowns = new Set();
     }
 
     /**
@@ -135,15 +122,6 @@ export class TextCommandHandler {
         message: BetterMessage,
         args: string[]
     ) {
-        if (this.coolDowns.has(message.author.id))
-            return message.reply(
-                this.client.functions.generateErrorMessage({
-                    title: "Command Cooldown",
-                    description:
-                        "Please wait a second before running this command again!"
-                })
-            );
-
         this.client.usersUsingBot.add(message.author.id);
         command
             .run(message, args)
@@ -168,10 +146,5 @@ export class TextCommandHandler {
                     })
                 );
             });
-        this.coolDowns.add(message.author.id);
-        setTimeout(
-            () => this.coolDowns.delete(message.author.id),
-            this.coolDownTime
-        );
     }
 }

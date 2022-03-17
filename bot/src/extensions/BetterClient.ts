@@ -1,21 +1,21 @@
 import { resolve } from "path";
 import * as metrics from "datadog-metrics";
 import { Client, ClientOptions, Collection } from "discord.js";
-import Button from "../classes/Button.js";
-import DropDown from "../classes/DropDown.js";
-import * as Logger from "../classes/Logger.js";
-import Config from "../../config/bot.config.js";
-import Functions from "../utilities/functions.js";
-import { CachedStats, Stats } from "../../typings";
-import TextCommand from "../classes/TextCommand.js";
-import EventHandler from "../classes/EventHandler.js";
-import SlashCommand from "../classes/SlashCommand.js";
-import ButtonHandler from "../classes/ButtonHandler.js";
-import DropDownHandler from "../classes/DropDownHandler.js";
-import TextCommandHandler from "../classes/TextCommandHandler.js";
-import SlashCommandHandler from "../classes/SlashCommandHandler.js";
-import AutoCompleteHandler from "../classes/AutoCompleteHandler.js";
-import AutoComplete from "../classes/AutoComplete.js";
+import { Button } from "~/classes/Button";
+import { DropDown } from "~/classes/DropDown";
+import { Logger } from "~/classes/Logger";
+import { Functions } from "~/utilities/functions";
+import { TextCommand } from "~/classes/TextCommand";
+import { EventHandler } from "~/classes/EventHandler";
+import { SlashCommand } from "~/classes/SlashCommand";
+import { ButtonHandler } from "~/classes/ButtonHandler";
+import { TextCommandHandler } from "../classes/TextCommandHandler";
+import { SlashCommandHandler } from "../classes/SlashCommandHandler";
+import { AutoCompleteHandler } from "../classes/AutoCompleteHandler";
+import { AutoComplete } from "../classes/AutoComplete";
+import { DropdownHandler } from "~/classes/DropDownHandler";
+import { CachedStats, Stats } from "~/typings";
+import { config } from "~/config";
 
 export class BetterClient extends Client {
     /**
@@ -36,7 +36,7 @@ export class BetterClient extends Client {
     /**
      * The logger for our client.
      */
-    public readonly logger: Logger.Logger;
+    public readonly logger: Logger;
 
     /**
      * The slashCommandHandler for our client.
@@ -71,7 +71,7 @@ export class BetterClient extends Client {
     /**
      * The dropDownHandler for our client.
      */
-    public readonly dropDownHandler: DropDownHandler;
+    public readonly dropDownHandler: DropdownHandler;
 
     /**
      * The dropDowns for our client.
@@ -92,11 +92,6 @@ export class BetterClient extends Client {
      * The events for our client.
      */
     public events: Map<string, EventHandler>;
-
-    /**
-     * Our MongoDB database.
-     */
-    public readonly mongo: MongoClient;
 
     /**
      * Our data dog client.
@@ -133,9 +128,9 @@ export class BetterClient extends Client {
         this.__dirname = resolve();
 
         this.usersUsingBot = new Set();
-        this.config = Config;
+        this.config = config;
         this.functions = new Functions(this);
-        this.logger = Logger.default;
+        this.logger = new Logger();
 
         this.slashCommandHandler = new SlashCommandHandler(this);
         this.slashCommands = new Collection();
@@ -146,15 +141,13 @@ export class BetterClient extends Client {
         this.buttonHandler = new ButtonHandler(this);
         this.buttons = new Collection();
 
-        this.dropDownHandler = new DropDownHandler(this);
+        this.dropDownHandler = new DropdownHandler(this);
         this.dropDowns = new Collection();
 
         this.autoCompleteHandler = new AutoCompleteHandler(this);
         this.autoCompletes = new Collection();
 
         this.events = new Map();
-
-        this.mongo = new MongoClient(process.env.MONGO_URI);
 
         this.version =
             process.env.NODE_ENV === "development"
@@ -190,6 +183,7 @@ export class BetterClient extends Client {
                 prefix: `${this.config.botName}.`,
                 defaultTags: [`env:${process.env.NODE_ENV}`]
             });
+
             setInterval(() => {
                 this.dataDog.gauge("guilds", this.cachedStats.guilds);
                 this.dataDog.gauge("users", this.cachedStats.users);

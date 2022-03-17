@@ -1,4 +1,3 @@
-import { format } from "@lukeed/ms";
 import {
     ApplicationCommandOptionData,
     CommandInteraction,
@@ -6,7 +5,7 @@ import {
     PermissionString,
     Snowflake
 } from "discord.js";
-import BetterClient from "~/extensions/BetterClient";
+import { BetterClient } from "~/extensions/BetterClient";
 import { SlashCommandOptions } from "~/typings";
 
 export class SlashCommand {
@@ -51,11 +50,6 @@ export class SlashCommand {
     private readonly ownerOnly: boolean;
 
     /**
-     * The cooldown for this slash command.
-     */
-    public readonly cooldown: number;
-
-    /**
      * Our client.
      */
     public readonly client: BetterClient;
@@ -84,27 +78,7 @@ export class SlashCommand {
         this.guildOnly = options.guildOnly || false;
         this.ownerOnly = options.ownerOnly || false;
 
-        this.cooldown = options.cooldown || 0;
-
         this.client = client;
-    }
-
-    /**
-     * Apply the cooldown for this slash command.
-     * @param userId The userId to apply the cooldown on.
-     * @returns True or false if the cooldown is actually applied.
-     */
-    public async applyCooldown(userId: Snowflake): Promise<boolean> {
-        if (this.cooldown)
-            return !!(await this.client.mongo
-                .db("cooldowns")
-                .collection("slashCommands")
-                .updateOne(
-                    { textCommand: this.name.toLowerCase() },
-                    { $set: { [userId]: Date.now() } },
-                    { upsert: true }
-                ));
-        return false;
     }
 
     /**
@@ -171,29 +145,6 @@ export class SlashCommand {
                     this.clientPermissions.length > 1 ? "s" : ""
                 } to run this command.`
             };
-        else if (this.cooldown) {
-            const onCooldown = await this.client.mongo
-                .db("cooldowns")
-                .collection("slashCommands")
-                .findOne({
-                    textCommand: this.name.toLowerCase(),
-                    [interaction.user.id]: { $exists: true }
-                });
-            if (onCooldown)
-                if (
-                    Date.now() - onCooldown[interaction.user.id] <
-                    this.cooldown
-                )
-                    return {
-                        title: "Command On Cooldown",
-                        description: `This command is still on cooldown for another ${format(
-                            onCooldown[interaction.user.id] +
-                                this.cooldown -
-                                Date.now(),
-                            true
-                        )}!`
-                    };
-        }
         return null;
     }
 

@@ -1,6 +1,6 @@
 import { CommandInteraction, Snowflake } from "discord.js";
-import BetterClient from "~/extensions/BetterClient";
-import SlashCommand from "./SlashCommand";
+import { BetterClient } from "~/extensions/BetterClient";
+import { SlashCommand } from "./SlashCommand";
 
 export class SlashCommandHandler {
     /**
@@ -9,24 +9,11 @@ export class SlashCommandHandler {
     private readonly client: BetterClient;
 
     /**
-     * How long a user must wait between each slash command.
-     */
-    private readonly coolDownTime: number;
-
-    /**
-     * Our user's cooldowns.
-     */
-    private coolDowns: Set<Snowflake>;
-
-    /**
      * Create our SlashCommandHandler.
      * @param client Our client.
      */
     constructor(client: BetterClient) {
         this.client = client;
-
-        this.coolDownTime = 1000;
-        this.coolDowns = new Set();
     }
 
     /**
@@ -241,21 +228,10 @@ export class SlashCommandHandler {
         command: SlashCommand,
         interaction: CommandInteraction
     ): Promise<any> {
-        if (this.coolDowns.has(interaction.user.id))
-            return interaction.editReply(
-                this.client.functions.generateErrorMessage({
-                    title: "Command Cooldown",
-                    description:
-                        "Please wait a second before running this command again!"
-                })
-            );
-
         this.client.usersUsingBot.add(interaction.user.id);
         command
             .run(interaction)
             .then(async () => {
-                if (command.cooldown)
-                    await command.applyCooldown(interaction.user.id);
                 this.client.usersUsingBot.delete(interaction.user.id);
                 this.client.dataDog.increment("slashCommandUsage", 1, [
                     `command:${command.name}`
@@ -282,10 +258,5 @@ export class SlashCommandHandler {
                         ...toSend
                     });
             });
-        this.coolDowns.add(interaction.user.id);
-        setTimeout(
-            () => this.coolDowns.delete(interaction.user.id),
-            this.coolDownTime
-        );
     }
 }

@@ -1,4 +1,4 @@
-import EventHandler from "../classes/EventHandler.js";
+import { EventHandler } from "~/classes/EventHandler";
 
 export class Warn extends EventHandler {
     override async run(info: string) {

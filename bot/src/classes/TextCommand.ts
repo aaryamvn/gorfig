@@ -1,7 +1,7 @@
 import { format } from "@lukeed/ms";
 import { MessageEmbedOptions, PermissionString, Snowflake } from "discord.js";
-import BetterClient from "~/extensions/BetterClient";
-import BetterMessage from "~/extensions/BetterMessage";
+import { BetterClient } from "~/extensions/BetterClient";
+import { BetterMessage } from "~/extensions/BetterMessage";
 import { TextCommandOptions } from "~/typings";
 
 export class TextCommand {
@@ -46,11 +46,6 @@ export class TextCommand {
     private readonly ownerOnly: boolean;
 
     /**
-     * The cooldown for this slash command.
-     */
-    public readonly cooldown: number;
-
-    /**
      * Our client.
      */
     public readonly client: BetterClient;
@@ -79,27 +74,7 @@ export class TextCommand {
         this.guildOnly = options.guildOnly || false;
         this.ownerOnly = options.ownerOnly || false;
 
-        this.cooldown = options.cooldown || 0;
-
         this.client = client;
-    }
-
-    /**
-     * Apply the cooldown for this text command.
-     * @param userId The userId to apply the cooldown on.
-     * @returns True or false if the cooldown is actually applied.
-     */
-    public async applyCooldown(userId: Snowflake): Promise<boolean> {
-        if (this.cooldown)
-            return !!(await this.client.mongo
-                .db("cooldowns")
-                .collection("textCommands")
-                .updateOne(
-                    { textCommand: this.name.toLowerCase() },
-                    { $set: { [userId]: Date.now() } },
-                    { upsert: true }
-                ));
-        return false;
     }
 
     /**
@@ -163,26 +138,6 @@ export class TextCommand {
                     this.clientPermissions.length > 1 ? "s" : ""
                 } to run this command.`
             };
-        else if (this.cooldown) {
-            const onCooldown = await this.client.mongo
-                .db("cooldowns")
-                .collection("textCommands")
-                .findOne({
-                    textCommand: this.name.toLowerCase(),
-                    [message.author.id]: { $exists: true }
-                });
-            if (onCooldown)
-                if (Date.now() - onCooldown[message.author.id] < this.cooldown)
-                    return {
-                        title: "Command On Cooldown",
-                        description: `This command is still on cooldown for another ${format(
-                            onCooldown[message.author.id] +
-                                this.cooldown -
-                                Date.now(),
-                            true
-                        )}!`
-                    };
-        }
         return null;
     }
 

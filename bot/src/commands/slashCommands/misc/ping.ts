@@ -1,6 +1,6 @@
 import { CommandInteraction, Message } from "discord.js";
-import SlashCommand from "../../../classes/SlashCommand.js";
-import BetterClient from "../../../extensions/BetterClient.js";
+import { SlashCommand } from "~/classes/SlashCommand";
+import { BetterClient } from "~/extensions/BetterClient";
 
 export class Ping extends SlashCommand {
     constructor(client: BetterClient) {

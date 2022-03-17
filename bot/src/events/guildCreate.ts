@@ -1,5 +1,5 @@
 import { Guild } from "discord.js";
-import EventHandler from "../classes/EventHandler.js";
+import { EventHandler } from "~/classes/EventHandler";
 
 export class GuildCreate extends EventHandler {
     override async run(guild: Guild) {
