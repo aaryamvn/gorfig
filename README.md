@@ -1,19 +1,51 @@
-# Gorfig (WIP)
+# **Gorfig (WIP)**
 
-## **Brief Overview**
+Making a discord bot for a specific server? Gorfig automatically populates the codebase for your bot with vital guild-specific information and it's types.
 
-A simple discord bot that allows you to obtain all the role, channel, sticker, or emoji data of a discord guild in key-value pairs (supports ts, js, and py).
+### **Supports**
 
-## **How is this useful?**
+- Channel Information
+- Role Information
+- Emoji Information
+- Sticker Information
+- Webhook Information
 
-**When you're** building a tool or a bot for a discord server, it's likely you'll need to work with common features like roles, channels, stickers, or emecific data for said feature(s). This data is usually extracted manually and is a very time consuming process.
+<br>
 
-**For example**, if you needed the IDs and Names of every single role in your guild, manually obtaining it is most certainly a pain.
+## **How To Use Gorfig**
 
-**This is where Gorfig comes in.** Simply add the bot to the respective guild, and run a singular command to get all the data for roles, channels, emojis, or stickers in a key-value pair format for a language of choice (typescript, javascript, python).
+DISCLAIMER: this section is highly conceptual and is a WIP
+
+### Add Gorfig Bot to your Discord Server
+
+First, you need to add the <a>Gorfig Discord Bot</a> to the guild you want to obtain information for.
+
+### Initialize Gorfig in your Codebase
+
+```bash
+> cd my_bot_codebase
+> npm install gorfig
+> gorfig init
+```
+
+### Populate your Codebase with Guild Information
+
+```bash
+> gorfig populate
+```
+
+<br>
+
+## **Use Case**
+
+**When you're** building a tool or a bot for a _specific_ discord server, it's likely you'll need to work with common data or "information" for features like roles, channels, and more. This data is usually extracted manually and put into a certain file of your codebase.
+
+**For example**, if you needed the IDs and Names of every single role in your guild, manually obtaining it can become time-consuming.
+
+<br>
 
 ## **Contributing**
 
 This project is lead by <a href="https://twitter.com/aaryamvn">@aaryamvn</a> (Aaryaman Maheshwari).
 
-If you are interested in contributing to this project, make a pull request into the `dev` branch. I highly recommend pinging me (Aaryaman#0001) in the <a href="">Gorfig Discord Server</a> prior to actually making a code contribution.
+If you are interested in contributing to this project, make a pull request into the `dev` branch. Please ping `aaryaman#0001` in the <a href="">Gorfig Discord Server</a> prior to making any form of contribution.
