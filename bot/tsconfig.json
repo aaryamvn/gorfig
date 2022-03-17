@@ -2,6 +2,7 @@
     "compilerOptions": {
         "lib": ["ES2015"],
         "outDir": "dist",
+        "target": "es5",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "strictFunctionTypes": true,

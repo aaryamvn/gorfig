@@ -15,6 +15,7 @@
         "@sentry/tracing": "^6.18.2",
         "colorette": "^2.0.16",
         "discord.js": "github:FireDiscordBot/discord.js",
+        "dotenv": "^16.0.0",
         "petitio": "^1.4.0"
     },
     "devDependencies": {

@@ -9,7 +9,7 @@ import {
 } from "colorette";
 import { format } from "util";
 import { WebhookClient, WebhookMessageOptions } from "discord.js";
-import init from "../utilities/sentry.js";
+import init from "~/utilities/sentry";
 
 export class Logger {
     /**
@@ -99,6 +99,7 @@ export class Logger {
         else if (!this.webhooks[type.toLowerCase()]) {
             const webhookURL = process.env[`${type.toUpperCase()}_HOOK`];
             if (!webhookURL) throw new Error(`Invalid webhook type provided!`);
+
             this.webhooks[type.toLowerCase()] = new WebhookClient({
                 url: process.env[`${type.toUpperCase()}_HOOK`]!
             });

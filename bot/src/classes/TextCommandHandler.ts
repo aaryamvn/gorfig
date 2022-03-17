@@ -1,7 +1,7 @@
 import { Snowflake } from "discord.js";
-import TextCommand from "./TextCommand.js";
-import BetterClient from "../extensions/BetterClient.js";
-import BetterMessage from "../extensions/BetterMessage.js";
+import BetterClient from "~/extensions/BetterClient";
+import BetterMessage from "~/extensions/BetterMessage";
+import TextCommand from "./TextCommand";
 
 export default class TextCommandHandler {
     /**
