@@ -2,7 +2,7 @@ import { SelectMenuInteraction } from "discord.js";
 import BetterClient from "~/extensions/BetterClient";
 import DropDown from "./DropDown";
 
-export default class DropdownHandler {
+export class DropdownHandler {
     /**
      * Our client.
      */

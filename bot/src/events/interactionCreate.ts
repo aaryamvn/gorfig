@@ -1,7 +1,7 @@
 import { Interaction } from "discord.js";
 import EventHandler from "../classes/EventHandler.js";
 
-export default class InteractionCreate extends EventHandler {
+export class InteractionCreate extends EventHandler {
     override async run(interaction: Interaction) {
         this.client.logger.info(
             `${interaction.type} interaction created: ${interaction.toString()}`

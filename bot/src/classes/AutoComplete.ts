@@ -1,7 +1,7 @@
 import { AutocompleteInteraction } from "discord.js";
 import BetterClient from "~/extensions/BetterClient";
 
-export default class AutoComplete {
+export class AutoComplete {
     /**
      * The name of our autoComplete.
      */

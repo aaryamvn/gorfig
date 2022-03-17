@@ -1,7 +1,7 @@
 import { ClientEvents } from "discord.js";
 import BetterClient from "~/extensions/BetterClient";
 
-export default class EventHandler {
+export class EventHandler {
     /**
      * The name of our event.
      */

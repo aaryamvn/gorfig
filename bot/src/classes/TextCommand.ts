@@ -4,7 +4,7 @@ import BetterClient from "~/extensions/BetterClient";
 import BetterMessage from "~/extensions/BetterMessage";
 import { TextCommandOptions } from "~/typings";
 
-export default class TextCommand {
+export class TextCommand {
     /**
      * The name for our text command.
      */

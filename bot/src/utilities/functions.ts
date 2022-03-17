@@ -16,7 +16,7 @@ import { permissionNames } from "./permissions.js";
 import BetterClient from "../extensions/BetterClient.js";
 import { GeneratedMessage, GenerateTimestampOptions } from "../../typings";
 
-export default class Functions {
+export class Functions {
     /**
      * Our Client.
      */

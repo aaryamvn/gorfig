@@ -1,7 +1,7 @@
 import { Guild } from "discord.js";
 import EventHandler from "../classes/EventHandler.js";
 
-export default class GuildDelete extends EventHandler {
+export class GuildDelete extends EventHandler {
     override async run(guild: Guild) {
         const stats = await this.client.fetchStats();
         this.client.dataDog.gauge("guilds", stats.guilds);

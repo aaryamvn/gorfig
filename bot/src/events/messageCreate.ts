@@ -1,7 +1,7 @@
 import EventHandler from "../classes/EventHandler.js";
 import BetterMessage from "../extensions/BetterMessage.js";
 
-export default class MessageCreate extends EventHandler {
+export class MessageCreate extends EventHandler {
     override async run(message: BetterMessage) {
         this.client.dataDog.increment("messagesSeen");
         if (message.author.bot) return;

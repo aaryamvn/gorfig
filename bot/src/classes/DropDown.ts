@@ -6,7 +6,7 @@ import {
 import BetterClient from "~/extensions/BetterClient";
 import { ButtonOptions } from "~/typings/index";
 
-export default class DropDown {
+export class DropDown {
     /**
      * The beginning of the customId the dropdown listens for.
      */

@@ -2,7 +2,7 @@ import { CommandInteraction, Message } from "discord.js";
 import SlashCommand from "../../../classes/SlashCommand.js";
 import BetterClient from "../../../extensions/BetterClient.js";
 
-export default class Ping extends SlashCommand {
+export class Ping extends SlashCommand {
     constructor(client: BetterClient) {
         super("ping", client, {
             description: `Pong! Get the current ping / latency of ${client.config.botName}.`

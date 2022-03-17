@@ -3,7 +3,7 @@ import BetterClient from "~/extensions/BetterClient";
 import BetterMessage from "~/extensions/BetterMessage";
 import TextCommand from "./TextCommand";
 
-export default class TextCommandHandler {
+export class TextCommandHandler {
     /**
      * Our client.
      */

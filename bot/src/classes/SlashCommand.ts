@@ -9,7 +9,7 @@ import {
 import BetterClient from "~/extensions/BetterClient";
 import { SlashCommandOptions } from "~/typings";
 
-export default class SlashCommand {
+export class SlashCommand {
     /**
      * The name for our slash command.
      */

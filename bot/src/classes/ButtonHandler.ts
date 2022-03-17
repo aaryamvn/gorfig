@@ -3,7 +3,7 @@ import { ButtonInteraction } from "discord.js";
 import BetterClient from "~/extensions/BetterClient";
 import Button from "./Button";
 
-export default class ButtonHandler {
+export class ButtonHandler {
     /**
      * Our client.
      */

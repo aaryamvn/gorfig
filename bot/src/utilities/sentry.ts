@@ -6,7 +6,7 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-export default function init() {
+export function init() {
     Sentry.init({
         tracesSampleRate: 1,
         dsn: process.env.SENTRY_DSN

@@ -2,7 +2,7 @@ import { CommandInteraction, Snowflake } from "discord.js";
 import BetterClient from "~/extensions/BetterClient";
 import SlashCommand from "./SlashCommand";
 
-export default class SlashCommandHandler {
+export class SlashCommandHandler {
     /**
      * Our client.
      */

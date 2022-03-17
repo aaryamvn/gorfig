@@ -5,7 +5,7 @@ import {
     Structures
 } from "discord.js";
 
-export default class BetterMessage extends Message {
+export class BetterMessage extends Message {
     /**
      * Better reply function, if the message is deleted, just send a normal message instead.
      * @param options The options for our reply.

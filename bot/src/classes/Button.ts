@@ -6,7 +6,7 @@ import {
 import BetterClient from "~/extensions/BetterClient";
 import { ButtonOptions } from "~/typings";
 
-export default class Button {
+export class Button {
     /**
      * The beginning of the customId this button listens for.
      */

@@ -17,7 +17,7 @@ import SlashCommandHandler from "../classes/SlashCommandHandler.js";
 import AutoCompleteHandler from "../classes/AutoCompleteHandler.js";
 import AutoComplete from "../classes/AutoComplete.js";
 
-export default class BetterClient extends Client {
+export class BetterClient extends Client {
     /**
      * A set of users that are currently using the bot.
      */

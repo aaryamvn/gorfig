@@ -1,6 +1,6 @@
 import EventHandler from "../classes/EventHandler.js";
 
-export default class Err extends EventHandler {
+export class Err extends EventHandler {
     override async run(error: Error) {
         this.client.logger.error(error);
         this.client.logger.sentry.captureWithExtras(error, {

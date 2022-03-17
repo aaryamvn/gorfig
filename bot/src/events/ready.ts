@@ -1,6 +1,6 @@
 import EventHandler from "../classes/EventHandler.js";
 
-export default class Ready extends EventHandler {
+export class Ready extends EventHandler {
     override async run() {
         await this.client.application?.fetch();
         const allGuilds = await this.client.shard?.broadcastEval(async c =>
